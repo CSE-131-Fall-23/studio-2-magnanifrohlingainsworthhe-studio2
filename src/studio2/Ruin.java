@@ -13,20 +13,27 @@ public class Ruin {
 		double winChance = in.nextDouble();
 		System.out.println("Enter your win amount: ");
 		int winAmount = in.nextInt();
+		System.out.println("Enter the number of days you want to gamble: ");
+		int days = in.nextInt();
 
-		while (startAmount < winAmount && startAmount > 0) {
-			if (Math.random() < winChance) {
-				System.out.println("Win");
-				startAmount++;
-			} else {
-				System.out.println("Lose");
-				startAmount -= 2;
+		int currentAmount = startAmount;
+		
+		for (int i = 0; i < days; i++) {
+
+			currentAmount = startAmount;
+			
+			while (currentAmount < winAmount && currentAmount > 0) {
+				if (Math.random() < winChance) {
+					currentAmount++;
+				} else {
+					currentAmount -= 2;
+				}
 			}
-		}
-		if (startAmount <= 0) {
-			System.out.println("You had a ruin day");
-		} else {
-			System.out.println("You won YAY");
+			if (currentAmount <= 0) {
+				System.out.println("You had a ruin day");
+			} else {
+				System.out.println("You won YAY");
+			}
 		}
 	}
 
