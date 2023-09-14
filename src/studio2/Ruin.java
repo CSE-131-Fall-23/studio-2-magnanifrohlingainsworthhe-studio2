@@ -13,13 +13,21 @@ public class Ruin {
 		double winChance = in.nextDouble();
 		System.out.println("Enter your win amount: ");
 		int winAmount = in.nextInt();
-		
-		if(Math.random()<winChance) {
-			System.out.println("Win");
-		}else {
-			System.out.println("Lose");
+
+		while (startAmount < winAmount && startAmount > 0) {
+			if (Math.random() < winChance) {
+				System.out.println("Win");
+				startAmount++;
+			} else {
+				System.out.println("Lose");
+				startAmount -= 2;
+			}
 		}
-		
+		if (startAmount <= 0) {
+			System.out.println("You had a ruin day");
+		} else {
+			System.out.println("You won YAY");
+		}
 	}
 
 }
